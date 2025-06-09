@@ -11,7 +11,7 @@ public class NotificationService {
     private CurrencyAlertRepository currencyAlertRepository;
 
 
-    public void saveAlert(CurrencyAlert alert){
-
-    }
+//    public void saveAlert(CurrencyAlert alert){
+//
+//    }
 }
