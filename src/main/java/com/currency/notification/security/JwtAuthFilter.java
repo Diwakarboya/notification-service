@@ -38,18 +38,15 @@ public class JwtAuthFilter extends OncePerRequestFilter {
                         .map(SimpleGrantedAuthority::new)
                         .collect(Collectors.toList());
 
-                UserDetails userDetails = new org.springframework.security.core.userdetails.User(
-                        userId, "", authorities // No password needed, no roles for now
-                );
-
 
                 UsernamePasswordAuthenticationToken authToken =
                         new UsernamePasswordAuthenticationToken(
-                                userDetails,null,userDetails.getAuthorities());
+                                userId,null,authorities);
 
                 SecurityContextHolder.getContext().setAuthentication(authToken);
             }
         }
+        filterChain.doFilter(request, response);
 
 
     }

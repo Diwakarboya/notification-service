@@ -1,5 +1,6 @@
 package com.currency.notification.service;
 
+import com.currency.notification.DTO.CurrencyAlertRequest;
 import com.currency.notification.entity.CurrencyAlertEntity;
 import com.currency.notification.repository.CurrencyAlertRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +12,15 @@ public class NotificationService {
     private CurrencyAlertRepository currencyAlertRepository;
 
 
-//    public void saveAlert(CurrencyAlert alert){
-//
-//    }
+    public void saveAlert(CurrencyAlertRequest alertRequest){
+        CurrencyAlertEntity currencyAlertEntity = new CurrencyAlertEntity();
+        currencyAlertEntity.setEmail(alertRequest.getEmail());
+        currencyAlertEntity.setCurrency2(alertRequest.getCurrency2());
+        currencyAlertEntity.setCurrency1(alertRequest.getCurrency1());
+        currencyAlertEntity.setThreshold(alertRequest.getThreshold());
+        currencyAlertEntity.setNotifyOnDrop(alertRequest.isNotifyOnDrop());
+        currencyAlertRepository.save(currencyAlertEntity);
+
+
+    }
 }

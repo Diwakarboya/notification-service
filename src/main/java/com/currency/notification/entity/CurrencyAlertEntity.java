@@ -13,7 +13,7 @@ public class CurrencyAlertEntity {
     private Long id;
 
     @Column(nullable = false)
-    private Long userId;
+    private String email;
 
     @Column(nullable = false)
     private String currency1;

@@ -5,6 +5,7 @@ import com.currency.notification.DTO.CurrencyAlertRequest;
 import org.springframework.http.ResponseEntity;
 //import org.springframework.security.access.prepost.PreAuthorize;
 //import org.springframework.security.core.Authentication;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -21,9 +22,11 @@ public class Controller {
 
 
     @GetMapping("/check")
+    @PreAuthorize("hasRole('USER')")
     public ResponseEntity<?> healthCheck() {
-        String hello = "new world";
         return ResponseEntity.ok("Service is Up!!");
     }
+
+
 
 }
