@@ -12,14 +12,15 @@ public class NotificationService {
     private CurrencyAlertRepository currencyAlertRepository;
 
 
-    public void saveAlert(CurrencyAlertRequest alertRequest){
+    public Long saveAlert(CurrencyAlertRequest alertRequest){
         CurrencyAlertEntity currencyAlertEntity = new CurrencyAlertEntity();
         currencyAlertEntity.setEmail(alertRequest.getEmail());
         currencyAlertEntity.setCurrency2(alertRequest.getCurrency2());
         currencyAlertEntity.setCurrency1(alertRequest.getCurrency1());
         currencyAlertEntity.setThreshold(alertRequest.getThreshold());
         currencyAlertEntity.setNotifyOnDrop(alertRequest.isNotifyOnDrop());
-        currencyAlertRepository.save(currencyAlertEntity);
+        CurrencyAlertEntity alert = currencyAlertRepository.save(currencyAlertEntity);
+        return alert.getId();
 
 
     }
